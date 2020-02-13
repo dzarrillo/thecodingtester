@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import Spinner from "../../components/loadingspinner/LoadingSoinner";
 import "./Exam.css";
 import axios from "axios";
 
@@ -7,6 +8,7 @@ class Exam extends Component {
     super(props);
     this.state = {
       exams: [],
+      isLoading: true
     };
   }
 
@@ -15,7 +17,10 @@ class Exam extends Component {
     const { typeoftest } = this.props.location.state;
     let exam = "";
     console.log(`Type of test: ${typeoftest} `);
-    switch(typeoftest){
+
+    this.setState({isLoading: true});
+
+    switch (typeoftest) {
       case "CSS":
         exam = "api/cssexam";
         break;
@@ -29,7 +34,7 @@ class Exam extends Component {
         exam = "api/node";
         break;
       case "EXPRESS":
-      exam = "api/express";
+        exam = "api/express";
         break;
       case "REACT.JS":
         exam = "api/react";
@@ -47,16 +52,18 @@ class Exam extends Component {
         exam = "Exam not available";
         break;
     }
-    
+
     this.getData(exam);
   }
 
-  getData = async (exam) => {
+  getData = async exam => {
     try {
       const questions = await axios.get(exam);
       this.setState({ exams: questions.data });
     } catch (error) {
       console.log(`axios failed to get data: ${error}`);
+    } finally {
+      this.setState({isLoading: false});
     }
   };
 
@@ -65,6 +72,7 @@ class Exam extends Component {
       <Fragment>
         <div className="container-page">
           <h1>Exams</h1>
+          
           {!this.state.exams.length ? (
             <h1>No data to display</h1>
           ) : (
@@ -72,7 +80,7 @@ class Exam extends Component {
               return <p key={exam.question}> {exam.question} </p>;
             })
           )}
-          <p>{this.state.chump}</p>
+          {this.state.isLoading ? <Spinner></Spinner> : ""}
         </div>
       </Fragment>
     );
