@@ -22,7 +22,7 @@ class NavBar extends Component {
         return;
       case false:
         return (
-          <li className="nav-li">
+          <li className="nav-li-right">
             <NavLink className="li-navlink" to="/signin">
               Sign In
             </NavLink>
@@ -38,7 +38,7 @@ class NavBar extends Component {
                 Resources
               </NavLink>
             </li>
-            <li className="nav-li">
+            <li className="nav-li-right">
               <a className="li-navlink" href="/api/logout">
                 Logout
               </a>
@@ -68,17 +68,14 @@ class NavBar extends Component {
                 Home
               </NavLink>
             </li>
-            {/* <li className="nav-li">
-              <NavLink className="li-navlink" to="/about">
-                About
-              </NavLink>
-            </li> */}
-            {this.renderContent()}
-            <li className=" nav-li-right">
-              <NavLink className="li-navlink" to="/help">
-                Help
+            <li className="nav-li">
+              <NavLink className="li-navlink" to="/blog">
+                Blog
               </NavLink>
             </li>
+            {this.renderContent()}
+
+           
           </ul>
         </nav>
 

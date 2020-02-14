@@ -1,5 +1,6 @@
 import React, { Fragment, Component } from "react";
 import "./App.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,6 +14,7 @@ import Resources from "./pages/resources/Resources";
 import SignIn from "./pages/signin/SignIn";
 import About from "./pages/about/About";
 import Exam from "./pages/exam/Exam";
+import Blog from "./pages/blog/Blog";
 import Help from "./pages/help/Help";
 import Footer from "./components/footer/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -38,6 +40,7 @@ class App extends Component {
                 {/* <Route exact path="/" component={LandingPage} /> */}
                 <Route exact path="/" component={Home} />
                 <Route exact path="/home" component={Home} />
+                <Route exact path="/blog" component={Blog} />
                 <Route exact path="/signin" component={SignIn} />
                 <Route exact path="/about" component={About} />
                 <Route exact path="/help" component={Help} />
