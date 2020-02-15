@@ -1,4 +1,12 @@
 
+
 .blog-title{
-    
+    text-align: left;
+}
+.blog-article{
+    text-align: left;
+}
+.blog-recent-posts{
+    padding-left: 20px;
+    text-align: left;
 }

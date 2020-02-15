@@ -34,6 +34,7 @@ class App extends Component {
       <Fragment>
         <Layout>
           <Router>
+          {/* <NavBar /> */}
             <Row>
               <NavBar />
               <Switch>
