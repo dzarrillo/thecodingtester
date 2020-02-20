@@ -6,14 +6,14 @@ const Resources = () => {
     <div className="container-page">
       <h1>Resources page</h1>
       <div className="sidenav">
-        <a href="#section-html"><i className="fab fa-html5"></i>HTML</a>
-        <a href="#section-css"><i className="fab fa-css3"></i>CSS</a>
-        <a href="#section-javascript"><i className="fab fa-js-square"></i>JavaScript</a>
-        <a href="#section-react"><i className="fab fa-react"></i>>React</a>
-        <a href="#section-node"><i className="fab fa-node"></i>Node</a>
-        <a href="#section-express"><i className="fab fa-node-js"></i>Express</a>
-        <a href="#section-mysql"><i className="fas fa-bezier-curve"></i>MySQL</a>
-        <a href="#section-github"><i className="fab fa-git-square"></i>Git</a>
+        <a href="#section-html">HTML</a>
+        <a href="#section-css">CSS</a>
+        <a href="#section-javascript">JavaScript</a>
+        <a href="#section-react">React</a>
+        <a href="#section-node">Node</a>
+        <a href="#section-express">Express</a>
+        <a href="#section-mysql">MySQL</a>
+        <a href="#section-github">Git</a>
       </div>
       {/* Page content  */}
       <div className="main">
