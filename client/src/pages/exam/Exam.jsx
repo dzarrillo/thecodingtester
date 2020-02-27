@@ -16,7 +16,7 @@ class Exam extends Component {
     // let exam = this.setState( { exams: await axios.get("http://localhost:5001/api/cssexam") } )
     const { typeoftest } = this.props.location.state;
     let exam = "";
-    console.log(`Type of test: ${typeoftest} `);
+    console.log(`Type of test shit: ${typeoftest} `);
 
     this.setState({isLoading: true});
 
@@ -25,10 +25,13 @@ class Exam extends Component {
         exam = "api/cssexam";
         break;
       case "HTML5":
+        
         exam = "api/htmlexam";
         break;
-      case "JAVASCRIPT":
-        exam = "api/javascript";
+      case "JavaScript":
+        console.log("shitttttttt javascript")
+        // /api/javascriptexam
+        exam = "api/javascriptexam";
         break;
       case "NODE.JS":
         exam = "api/node";
@@ -58,6 +61,7 @@ class Exam extends Component {
 
   getData = async exam => {
     try {
+      console.log(exam);
       const questions = await axios.get(exam);
       this.setState({ exams: questions.data });
     } catch (error) {
