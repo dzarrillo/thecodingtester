@@ -7,7 +7,7 @@ const config = require("./config/config");
 
 // Mongodb schema for users
 require("./models/user");
-require("./models/cssExam");
+// require("./models/cssExam");
 // since we are not returning anything from passport we can condence it to just require.
 require("./config/passport");
 // Connect to mongo database

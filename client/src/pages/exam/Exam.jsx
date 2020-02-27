@@ -25,43 +25,40 @@ class Exam extends Component {
         exam = "api/cssexam";
         break;
       case "HTML5":
-        
         exam = "api/htmlexam";
         break;
       case "JavaScript":
-        console.log("shitttttttt javascript")
-        // /api/javascriptexam
-        exam = "api/javascriptexam";
+        exam = "api/jsexam";
         break;
-      case "NODE.JS":
-        exam = "api/node";
+      case "Node.js":
+        exam = "api/nodeexam";
         break;
-      case "EXPRESS":
-        exam = "api/express";
+      case "Express":
+        exam = "api/expressexam";
         break;
-      case "REACT.JS":
-        exam = "api/react";
+      case "React.js":
+        exam = "api/reactexam";
         break;
-      case "MONGO":
-        exam = "api/mongo";
+      case "Mongo":
+        exam = "api/mongoexam";
         break;
-      case "MYSQL":
-        exam = "api/mysql";
+      case "MySQL":
+        exam = "api/mysqlexam";
         break;
-      case "GITHUB":
-        exam = "api/github";
+      case "GitHub":
+        exam = "api/githubexam";
         break;
       default:
         exam = "Exam not available";
         break;
     }
-
+    console.log("You are getting ", exam);
     this.getData(exam);
   }
 
   getData = async exam => {
     try {
-      console.log(exam);
+      console.log("In getDadta ", exam);
       const questions = await axios.get(exam);
       this.setState({ exams: questions.data });
     } catch (error) {
