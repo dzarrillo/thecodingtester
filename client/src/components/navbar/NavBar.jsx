@@ -22,7 +22,7 @@ class NavBar extends Component {
         return;
       case false:
         return (
-          <li className="nav-li-right">
+          <li className="nav-li">
             <NavLink className="li-navlink" to="/signin">
               Sign In
             </NavLink>
@@ -31,16 +31,15 @@ class NavBar extends Component {
       default:
         // return "already logged in";
         return (
-          
           <Fragment>
             <li className="nav-li">
               <NavLink className="li-navlink" to="/resources">
                 Resources
               </NavLink>
             </li>
-            <li className="nav-li-right">
+            <li className="nav-li">
               <a className="li-navlink" href="/api/logout">
-                Logout
+                Sign out
               </a>
             </li>
           </Fragment>
@@ -74,8 +73,6 @@ class NavBar extends Component {
               </NavLink>
             </li>
             {this.renderContent()}
-
-           
           </ul>
         </nav>
 
