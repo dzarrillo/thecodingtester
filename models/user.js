@@ -4,7 +4,12 @@ const { Schema } = mongoose;
 const userSchema = new Schema({
     googleId: String,
     name: String,
-    email: String
+    email: String,
+    password: String,
+    createdAt: {
+        type: Date,
+        default: Date.now()
+    }
 });
 
 module.exports = mongoose.model("Users", userSchema);
