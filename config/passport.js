@@ -3,9 +3,6 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const mongoose = require("mongoose");
 const config = require("../config/config");
 const User = require("../models/user");
-// Add localstrategy for name & password login
-const LocalStrategy = require("passport-local");
-const bcrypt = require("bcrypt");
 
 // user.id is the shortcut to the auto generated mongodb _id
 // The reason why we use mongodb is because we might use facebook, github, twitter ....
@@ -62,4 +59,6 @@ passport.use(
     }
   )
 );
+
+
 

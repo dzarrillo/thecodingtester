@@ -3,6 +3,7 @@ const passport = require("passport");
 const mongoose = require("mongoose");
 const config = require("../config/config");
 const User = require("../models/user");
+const bcrypt = require("bcrypt");
 
 module.exports = app => {
   // The googlestrategy looks for the "google" string
@@ -20,7 +21,7 @@ module.exports = app => {
     (req, res) => {
       // res.send(req.user);
       // console.log(`Login ${JSON.stringify(req.user)}`);
-      res.redirect("/home");
+      res.redirect("/blog");
     }
   );
 
@@ -34,6 +35,7 @@ module.exports = app => {
   app.get("/api/current_user", (req, res, next) => {
     res.send(req.user);
   });
+
 
   // sign-in without using google
   app.post("/api/sign_in", (req, res) => {
@@ -58,11 +60,16 @@ module.exports = app => {
           // User already exists no need to save to database
         } else {
           console.log(`Save User data: ${name} ${email} ${password}`);
+          
           try {
+            // encrypt password
+            const salt = await bcrypt.genSalt(10);
+            const hashedPassword = await bcrypt.hash(password);
+
             const user = await User.create({
               name: name,
               email: email,
-              password: password
+              password: hashedPassword
             });
             // done(null, user);
             return res.send({
