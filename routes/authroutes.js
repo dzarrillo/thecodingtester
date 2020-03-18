@@ -47,29 +47,46 @@ module.exports = app => {
     console.log(`User data: ${name} ${email} ${password}`);
      saveUser = async () => {
       try {
-        console.log(`User data: ${name} ${email} ${password}`);
         // Lets check to see if user already exists
         const existingUser = await User.findOne({ email: email });
         if (existingUser) {
-          console.log(`User already exists in database`);
+          console.log(`User already exists in database, check password ${existingUser.password}`);
+          try {
+            if (await bcrypt.compare(password, existingUser.password)) {
+              // res.send("Logged in!!!!!!");
+              return res.send({
+                success: true,
+                message: "User already exists in database!"
+              });
+            } else {
+              res.send("Not allowed in!");
+            }
+          } catch {
+            res.status(500).send();
+          }
+          
+
           // done(null, existingUser);
-          return res.send({
-            success: true,
-            message: "User already exists in database!"
-          });
+          // return res.send({
+          //   success: true,
+          //   message: "User already exists in database!"
+          // });
+
+          
           // User already exists no need to save to database
         } else {
           console.log(`Save User data: ${name} ${email} ${password}`);
           
           try {
             // encrypt password
-            // const salt = await bcrypt.genSalt(10);
-            // const hashedPassword = await bcrypt.hash(password);
+            const salt = await bcrypt.genSalt(10);
+            const hashedPassword = await bcrypt.hash(password, salt);
 
+            console.log(`Hashpassword: ${name} ${email} ${hashedPassword}`);
             const user = await User.create({
               name: name,
               email: email,
-              password: password
+              password: hashedPassword
             });
             // done(null, user);
             return res.send({
