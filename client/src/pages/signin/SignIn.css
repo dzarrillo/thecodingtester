@@ -88,6 +88,13 @@
     opacity: 1;
   }
 
+  .error-msg{
+    display: block;
+    color: red;
+    padding: 3px;
+    font-size: 15px; 
+  }
+
   
 
 

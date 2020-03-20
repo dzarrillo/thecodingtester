@@ -2,8 +2,18 @@ import React, { Component, Fragment } from "react";
 import "./SignIn.css";
 import "react-bootstrap";
 
-const validEmailRegex = 
-  RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
+const validEmailRegex = RegExp(
+  /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+);
+
+const validateForm = errors => {
+  let valid = true;
+  Object.values(errors).forEach(
+    // if we have an error string set valid to false
+    val => val.length > 0 && (valid = false)
+  );
+  return valid;
+};
 
 class SignIn extends Component {
   constructor(props) {
@@ -43,16 +53,23 @@ class SignIn extends Component {
     }
 
     this.setState({ errors, [name]: value }, () => {
-      console.log(errors);
+      // console.log(errors);
+      this.setState({ errors, [name]: value });
     });
-  }
+  };
 
-  handleOnClickSignIn() {
-    // e.preventDefault();
-    console.log("OnClick signin!!");
-  }
+  handleSubmit = event => {
+    event.preventDefault();
+    if (validateForm(this.state.errors)) {
+      console.info("Valid Form");
+    } else {
+      console.error("Invalid Form");
+    }
+  };
 
   render() {
+    const { errors } = this.state;
+
     return (
       <Fragment>
         <div className="signin-container">
@@ -65,9 +82,14 @@ class SignIn extends Component {
                 type="text"
                 placeholder="Full Name"
                 name="fullName"
-                onChange={this.handleChange} 
+                onChange={this.handleChange}
                 noValidate
               />
+              {errors.fullName.length > 0 && (
+                <span className="error error-msg" style={{ color: "red" }}>
+                  {errors.fullName}
+                </span>
+              )}
             </div>
 
             <div className="input-container">
@@ -77,9 +99,13 @@ class SignIn extends Component {
                 type="text"
                 placeholder="Email"
                 name="email"
-                onChange={this.handleChange} 
+                onChange={this.handleChange}
                 noValidate
               />
+              {errors.email.length > 0 && (
+                <span className="error error-msg">{errors.email}</span>
+              )}
+              )}
             </div>
 
             <div className="input-container">
@@ -89,15 +115,18 @@ class SignIn extends Component {
                 type="password"
                 placeholder="Password"
                 name="password"
-                onChange={this.handleChange} 
+                onChange={this.handleChange}
                 noValidate
               />
+              {errors.password.length > 0 && (
+                <span className="error error-msg">{errors.password}</span>
+              )}
             </div>
             <div className="input-container">
               <button
                 type="button"
                 className="btn-signin"
-                onClick={this.handleOnClickSignIn}
+                onClick={this.handleSubmit}
               >
                 Sign in
               </button>
