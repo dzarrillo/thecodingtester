@@ -5,15 +5,4 @@ const {
 
 module.exports = function(app) {
   app.use(createProxyMiddleware(["/api", "/auth/google"], { target: "http://localhost:5001"}));
-
-
-//   app.use(
-//     ["/api", "/auth/google"],
-//     createProxyMiddleware({
-//       target: "http://localhost:5001",
-//       changeOrigin: true,
-//       preserveHeaderKeyCase: false
-//     })
-//   );
-
 };
