@@ -3,6 +3,12 @@ import "./SignIn.css";
 import "react-bootstrap";
 
 class SignIn extends Component {
+  
+  handleOnClickSignIn(){
+    // e.preventDefault();
+    console.log("OnClick signin!!");
+  }
+
   render() {
     return (
       <Fragment>
@@ -39,7 +45,7 @@ class SignIn extends Component {
               />
             </div>
             <div className="input-container">
-              <button type="submit" className="btn-signin">
+              <button type="button" className="btn-signin" onClick={this.handleOnClickSignIn}>
                 Sign in
               </button>
             </div>

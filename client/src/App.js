@@ -46,14 +46,10 @@ class App extends Component {
                 <Route exact path="/about" component={About} />
                 <Route exact path="/help" component={Help} />
                 <Route exact path="/exam" component={Exam} />
+                
+                <Route exact path="/resources" component={Resources} />
+                {/* <Route exact path="/resources" render={() => this.props.auth ? <Resources /> : <Redirect to="/signin" /> } /> */}
 
-                <Route
-                  exact
-                  path="/resources"
-                  render={() =>                     
-                    this.props.auth ? <Resources /> : <Redirect to="/signin" />
-                  }
-                />
               </Switch>
               <Footer />
             </Row>

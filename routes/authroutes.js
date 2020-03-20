@@ -37,7 +37,7 @@ module.exports = app => {
   });
 
 
-  // sign-in without using google
+  // sign-in using email & password
   app.post("/api/sign_in", (req, res) => {
     const { body } = req;
     const { name } = body;
