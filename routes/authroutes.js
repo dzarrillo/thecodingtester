@@ -58,22 +58,22 @@ module.exports = app => {
                 success: true,
                 message: "User already exists in database!"
               });
+              // console.log(`User exists in database go to redirect **** `);
+              // res.redirect("/blog");
+
             } else {
               res.send("Not allowed in!");
             }
           } catch {
             res.status(500).send();
           }
-          
 
           // done(null, existingUser);
           // return res.send({
           //   success: true,
           //   message: "User already exists in database!"
           // });
-
           
-          // User already exists no need to save to database
         } else {
           console.log(`Save User data: ${name} ${email} ${password}`);
           
@@ -89,6 +89,7 @@ module.exports = app => {
               password: hashedPassword
             });
             // done(null, user);
+
             return res.send({
               success: true,
               message: "Signed in"

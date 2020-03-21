@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import "./SignIn.css";
 import "react-bootstrap";
+import axios from "axios";
 
 const validEmailRegex = RegExp(
   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
@@ -58,10 +59,21 @@ class SignIn extends Component {
     });
   };
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault();
     if (validateForm(this.state.errors)) {
       console.info("Valid Form");
+      // post data
+      try {
+        const response = await axios.post("/api/sign_in", {
+          name: this.state.fullName,
+          email: this.state.email,
+          password: this.state.password
+        });
+        console.log(`returned data: ${JSON.stringify(response)}`);
+      } catch (error) {
+        console.log(`Axios post failed: ${error}`);
+      }
     } else {
       console.error("Invalid Form");
     }
