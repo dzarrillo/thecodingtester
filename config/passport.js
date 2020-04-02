@@ -1,15 +1,18 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const LocalStrategy = require("passport-local").Strategy;
 const mongoose = require("mongoose");
 const config = require("../config/config");
 const User = require("../models/user");
+const bcript = require("bcrypt");
 
 // user.id is the shortcut to the auto generated mongodb _id
-// The reason why we use mongodb is because we might use facebook, github, twitter ....
+// The reason why we use mongodb _id is because we might use facebook, github, twitter strategies
 passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 passport.deserializeUser((id, done) => {
+  console.log("deserialize");
   User.findById(id).then(user => {
     done(null, user);
   });
@@ -22,13 +25,9 @@ passport.use(
       clientSecret: config.auth.google_secret,
       callbackURL: "/auth/google/callback"
     },
-
     async (accessToken, refreshToken, profile, done) => {
       //Save to database
-      //   console.log("access token: ", accessToken);
-      //   console.log("refresh token: ", refreshToken);
-      // console.log("Profile: ", profile);
-
+      
       try {
         // Search database to see if user exists
         const existingUser = await User.findOne({ googleId: profile.id });
@@ -59,6 +58,31 @@ passport.use(
     }
   )
 );
+
+passport.use(new LocalStrategy(
+  
+  function(username, password, done){
+    console.log("Searching data - ");
+    user.findOne( {username: name},
+      function(err, user){
+        console.log("Searching data");
+
+        if(err){
+          return done(err);
+        }
+
+        if(!user){
+          return done(null, false, { message: 'Incorrect username.' });
+        }
+
+        if(!user.verifyPassword(password)){
+          return done(null, false, { message: 'Incorrect password.' });
+        }
+
+        return done(null, user);
+      });
+  }
+));
 
 
 

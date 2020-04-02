@@ -3,7 +3,7 @@ POST http://localhost:5001/api/sign_in
 Content-Type:application/json
 
 {
-    "name": "Joe Notare",
-    "email": "joenotare@gmail.com",
-    "password": "qwertyyy"
+    "name": "jose",
+    "email": "jose@gmail.com",
+    "password": "test123"
 }
