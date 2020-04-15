@@ -61,9 +61,9 @@ passport.use(
 
 passport.use(new LocalStrategy(
   
-  function(username, password, done){
+  (username, password, done) => {
     console.log("Searching data - ");
-    user.findOne( {username: name},
+    user.findOne( {username: username},
       function(err, user){
         console.log("Searching data");
 
@@ -82,6 +82,7 @@ passport.use(new LocalStrategy(
         return done(null, user);
       });
   }
+
 ));
 
 

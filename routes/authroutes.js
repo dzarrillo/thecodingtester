@@ -4,12 +4,12 @@ const config = require("../config/config");
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
 
-module.exports = app => {
+module.exports = (app) => {
   // The googlestrategy looks for the "google" string
   app.get(
     "/auth/google",
     passport.authenticate("google", {
-      scope: ["profile", "email"]
+      scope: ["profile", "email"],
     })
   );
 
@@ -35,82 +35,79 @@ module.exports = app => {
     res.send(req.user);
   });
 
-  // Using local-strategy for user authentication
+  // Using local-strategy for user log in authentication
   app.post(
     "/api/sign_in",
-    passport.authenticate("local", { 
+    passport.authenticate("local", {
       successRedirect: "/blog",
-      failureRedirect: "/"
+      failureRedirect: "/",
     })
   );
 
-  //  I'm not sure if I should be using passport-local strategy
-  // sign-in using email & password
-  // app.post("/api/sign_in", (req, res) => {
-  //   const { body } = req;
-  //   const { name } = body;
-  //   const { email } = body;
-  //   const { password } = body;
+  // Register first time user
+  app.post("/api/register", (req, res) => {
+    const { name, email, password, password2 } = req.body;
+    console.log(`User data => ${name} ${email} ${password} ${password2}`);
 
-  //   console.log(`User data: ${name} ${email} ${password}`);
-  //   saveUser = async () => {
-  //     try {
-  //       // Lets check to see if user already exists
-  //       const existingUser = await User.findOne({ email: email });
-  //       if (existingUser) {
-  //         console.log(
-  //           `User already exists in database, check password ${existingUser.password}`
-  //         );
-  //         try {
-  //           if (await bcrypt.compare(password, existingUser.password)) {
-  //             // res.send("Logged in!!!!!!");
-  //             return res.send({
-  //               success: true,
-  //               message: "User already exists in database!"
-  //             });
-  //             // console.log(`User exists in database go to redirect **** `);
-  //             // res.redirect("/blog");
-  //           } else {
-  //             res.send("Not allowed in!");
-  //           }
-  //         } catch {
-  //           res.status(500).send();
-  //         }
+    // Check required fields & send back any errors
+    let errors = [];
+    if (!name || !email || !password || !password2) {
+      errors.push({ msg: "Please fill in all fields!" });
+    }
+    // Check if passwords match
+    if (password !== password2) {
+      errors.push({ msg: "Passwords do not match!" });
+    }
+    // Check Password length
+    if (password.length < 8) {
+      errors.push({ msg: "Password must be at least 8 characters long!" });
+    }
 
-  //         // done(null, existingUser);
-  //         // return res.send({
-  //         //   success: true,
-  //         //   message: "User already exists in database!"
-  //         // });
-  //       } else {
-  //         console.log(`Save User data: ${name} ${email} ${password}`);
+    if (errors.length > 0) {
+      // console.log(`Error => ${errors[0]}`);
+      console.log("Error => " + errors[0].msg);
+      // res.send("Errors " + errors[0].msg);
+      res.send({"Errors": errors[0].msg});
+    } else {
+      // Check to see if user already exists in database
+      User.findOne({ email: email })
+        .then((user) => {
+          if (user) {
+            // User/email already exists, notify user and have them log in
+            console.log(`User already exists: ${user}`);
+            res.send("User already exists, please sign in!");
+          } else {
+            // Create new user
+            const newUser = new User({
+              name: name,
+              email: email,
+              password: password,
+            });
+            console.log(`New User: ${newUser}`);
 
-  //         try {
-  //           // encrypt password
-  //           const salt = await bcrypt.genSalt(10);
-  //           const hashedPassword = await bcrypt.hash(password, salt);
-
-  //           console.log(`Hashpassword: ${name} ${email} ${hashedPassword}`);
-  //           const user = await User.create({
-  //             name: name,
-  //             email: email,
-  //             password: hashedPassword
-  //           });
-  //           // done(null, user);
-
-  //           return res.send({
-  //             success: true,
-  //             message: "Signed in"
-  //           });
-  //         } catch (err) {
-  //           console.log("error " + err);
-  //         }
-  //       }
-  //     } catch (err) {
-  //       console.log("bad error " + err);
-  //     }
-  //   };
-
-  //   saveUser();
-  // });
+            // Before saving to database we must encrypt password using bcrypt
+            bcrypt.genSalt(10, (err, salt) => {
+              bcrypt.hash(newUser.password, salt, (err, hash) => {
+                newUser.password = hash;
+                // Now we can save new user
+                newUser
+                  .save()
+                  .then((user) => {
+                    console.log(`New User saved: ${user}`);
+                    res.send("User saved!");
+                  })
+                  .catch((err) => {
+                    console.log(`Error saving new user`);
+                    res.send("Failed saving new User");
+                  });
+              });
+            });
+          }
+        })
+        .catch((err) => {
+          console.log(`Database find error: ${err}`);
+          res.send("Database Find Failed!");
+        });
+    }
+  });
 };
