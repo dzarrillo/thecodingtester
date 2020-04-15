@@ -36,13 +36,12 @@ module.exports = (app) => {
   });
 
   // Using local-strategy for user log in authentication
-  app.post(
-    "/api/sign_in",
+  app.post("/api/sign_in", (req, res, next) => {
     passport.authenticate("local", {
-      successRedirect: "/blog",
-      failureRedirect: "/",
-    })
-  );
+      successRedirect: "/resource",
+      failureRedirect: "/sign_in"
+    }) (req, res, next);
+  });
 
   // Register first time user
   app.post("/api/register", (req, res) => {
@@ -67,7 +66,7 @@ module.exports = (app) => {
       // console.log(`Error => ${errors[0]}`);
       console.log("Error => " + errors[0].msg);
       // res.send("Errors " + errors[0].msg);
-      res.send({"Errors": errors[0].msg});
+      res.send({ Errors: errors[0].msg });
     } else {
       // Check to see if user already exists in database
       User.findOne({ email: email })

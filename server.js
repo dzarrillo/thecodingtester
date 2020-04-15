@@ -21,6 +21,7 @@ const app = express();
 // middleware Making it available on req.body
 // app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.use(
     cookieSession( {

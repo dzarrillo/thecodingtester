@@ -4,7 +4,7 @@ const LocalStrategy = require("passport-local").Strategy;
 const mongoose = require("mongoose");
 const config = require("../config/config");
 const User = require("../models/user");
-const bcript = require("bcrypt");
+const bcrypt = require("bcrypt");
 
 // user.id is the shortcut to the auto generated mongodb _id
 // The reason why we use mongodb _id is because we might use facebook, github, twitter strategies
@@ -59,31 +59,25 @@ passport.use(
   )
 );
 
-passport.use(new LocalStrategy(
-  
-  (username, password, done) => {
-    console.log("Searching data - ");
-    user.findOne( {username: username},
-      function(err, user){
-        console.log("Searching data");
+passport.use(new LocalStrategy( { usernameField: "email"}, (email, password, done) => {
+  // Check if user already exists
+  User.findOne( { email: email})
+  .then( user => {
+    if(!user) {
+      return done(null, false, { message: "User is not registered!"});
+    }
+    // If user is found match password
+    bcrypt.compare(password, user.password, (err, isMatch) => {
+      if(err) throw err;
 
-        if(err){
-          return done(err);
-        }
-
-        if(!user){
-          return done(null, false, { message: 'Incorrect username.' });
-        }
-
-        if(!user.verifyPassword(password)){
-          return done(null, false, { message: 'Incorrect password.' });
-        }
-
-        return done(null, user);
-      });
-  }
-
-));
-
-
-
+      if(isMatch){
+        return done(null, user, { message: "Password is correct!"});
+      } else {
+        return done(null, false, { message: "Password is incorrect!"});
+      }
+    });
+  })
+  .catch( err => {
+    console.log(`Error ${err}`);
+  });
+}));

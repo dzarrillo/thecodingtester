@@ -1,10 +1,10 @@
 
-POST http://localhost:5001/api/register 
+POST http://localhost:5001/api/sign_in 
 Content-Type:application/json
 
 {
-    "name": "apple",
-    "email": "apple@gmail.com",
-    "password": "zxcvbnm,",
-    "password2": "zxcvbnm,"
+    "name": "peter",
+    "email": "peter@gmail.com",
+    "password": "asdfghjk",
+    "password2": "asdfghjk"
 }
