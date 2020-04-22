@@ -20,7 +20,7 @@ module.exports = (app) => {
     (req, res) => {
       // res.send(req.user);
       // console.log(`Login ${JSON.stringify(req.user)}`);
-      res.redirect("/blog");
+      res.redirect("/resources");
     }
   );
 
@@ -36,12 +36,19 @@ module.exports = (app) => {
   });
 
   // Using local-strategy for user log in authentication
-  app.post("/api/sign_in", (req, res, next) => {
-    passport.authenticate("local", {
-      successRedirect: "/resource",
-      failureRedirect: "/sign_in"
-    }) (req, res, next);
-  });
+  // app.post("/api/sign_in", (req, res, next) => {
+  //   passport.authenticate("local", {
+  //     successRedirect: "/resources",
+  //     failureRedirect: "/sign_in"
+  //    }) (req, res, next);
+  //  });
+  app.post("/api/sign_in",
+    passport.authenticate("local", { failureRedirect: "/home" }),
+    function(req, res) {
+      console.log(`User logged in now redirect! `);
+      //res.redirect(307, "/resources");
+      res.send("success");
+    });
 
   // Register first time user
   app.post("/api/register", (req, res) => {

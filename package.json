@@ -4,6 +4,9 @@
   "description": "Online web development coding exams",
   "main": "server.js",
   "scripts": {
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "startDev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,6 +28,7 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
+    "concurrently": "^5.1.0",
     "nodemon": "^2.0.2"
   }
 }
