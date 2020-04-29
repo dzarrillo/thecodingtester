@@ -75,8 +75,8 @@ passport.use(
 
           if (isMatch) {
             console.log(`Password is a match: ${user}`);
-            // return done(null, user, { message: "Password is correct!" });
-            return done(null, user);
+            return done(null, user, { message: "Password is correct!" });
+            //return done(null, user);
           } else {
             console.log(`Password is not a match: ${user}`);
             return done(null, false, { message: "Password is incorrect!" });

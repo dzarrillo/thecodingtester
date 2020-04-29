@@ -16,6 +16,8 @@ import About from "./pages/about/About";
 import Exam from "./pages/exam/Exam";
 import Blog from "./pages/blog/Blog";
 import Help from "./pages/help/Help";
+import Register from "./pages/register/Register";
+import NoMatch from "./pages/nomatch/NoMatch";
 import Footer from "./components/footer/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Layout from "./pages/layout/Layout";
@@ -46,10 +48,10 @@ class App extends Component {
                 <Route exact path="/about" component={About} />
                 <Route exact path="/help" component={Help} />
                 <Route exact path="/exam" component={Exam} />
-                
+                <Route exact path="/register" component={Register} />
                 <Route exact path="/resources" component={Resources} />
                 {/* <Route exact path="/resources" render={() => this.props.auth ? <Resources /> : <Redirect to="/signin" /> } /> */}
-
+                <Route component={NoMatch} />
               </Switch>
               <Footer />
             </Row>

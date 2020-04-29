@@ -43,9 +43,10 @@ module.exports = (app) => {
   //    }) (req, res, next);
   //  });
   app.post("/api/sign_in",
-    passport.authenticate("local", { failureRedirect: "/home" }),
-    function(req, res) {
-      console.log(`User logged in now redirect! `);
+    passport.authenticate("local", null),
+    function(req, res, info) {
+      console.log(`User logged in now redirect! ${info}`);
+      
       //res.redirect(307, "/resources");
       res.send("success");
     });
@@ -100,7 +101,7 @@ module.exports = (app) => {
                   .save()
                   .then((user) => {
                     console.log(`New User saved: ${user}`);
-                    res.send("User saved!");
+                    res.status(200).send("User saved!");
                   })
                   .catch((err) => {
                     console.log(`Error saving new user`);
@@ -111,8 +112,8 @@ module.exports = (app) => {
           }
         })
         .catch((err) => {
-          console.log(`Database find error: ${err}`);
-          res.send("Database Find Failed!");
+          console.log(`Database connection error: ${err}`);
+          res.send("Database connection error!");
         });
     }
   });

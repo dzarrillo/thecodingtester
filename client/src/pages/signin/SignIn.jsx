@@ -4,9 +4,9 @@ import "react-bootstrap";
 import axios from "axios";
 
 
-const validEmailRegex = RegExp(
-  /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
-);
+// const validEmailRegex = RegExp(
+//   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+// );
 
 const validateForm = (errors) => {
   let valid = true;
@@ -44,7 +44,7 @@ class SignIn extends Component {
       //     value.length < 5 ? "Full Name must be 5 characters long!" : "";
       //   break;
       case "email":
-        errors.email = validEmailRegex.test(value) ? "" : "Email is not valid!";
+        //errors.email = validEmailRegex.test(value) ? "" : "Email is not valid!";
         break;
       case "password":
         errors.password =
@@ -62,24 +62,34 @@ class SignIn extends Component {
   };
 
   handleSubmit = async event => {
-    event.preventDefault();
+    //event.preventDefault();
     if (validateForm(this.state.errors)) {
       console.info("Valid Form");
       // post data
       try {
-
+        
         const response = await axios.post("/api/sign_in", {
           // name: this.state.fullName,
           email: this.state.email,
           password: this.state.password
         });
-        console.log(`returned data: ${JSON.stringify(response.status)}`);
-         if(response.status = 200) {
-          console.log(`redirect to resources here !!!!!!`);
+        
+        if(response.status === 200) {
+          // Does not refresh navbar with logout menuitem
+          //this.props.history.push("/resources"); 
+          window.location = "/resources";
+          
          }
       } catch (error) {
         console.log(`Axios post failed: ${error}`);
-        //console.log(`Axios res error: ${response.status}`);
+
+        let errors = this.state.errors;
+        errors.email = "Email or password not valid!";
+        this.setState({ errors, email: "" }, () => {
+          
+          this.setState({ errors, email: "" });
+        });
+                
       }
     } else {
       console.error("Invalid Form");
@@ -136,7 +146,7 @@ class SignIn extends Component {
               </button>
             </div>
             <div className="input-container">
-              <a href="#">If new user register here</a>
+              <a href="/register">If new user register here</a>
             </div>
             <div className="input-container">
               <a href="/auth/google" className="google btn-signin">
