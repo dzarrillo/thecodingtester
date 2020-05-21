@@ -18,127 +18,171 @@ const Resources = () => {
       {/* Page content  */}
       <div className="main">
         <div id="section-html" className="section-html section">
-          <h2>HTML</h2>
+          <h2>HTML5</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
-            est, repellat reprehenderit, dignissimos porro ipsam impedit
-            voluptatem mollitia accusamus, veniam in earum deserunt ut aut esse
-            vero nulla quia corporis optio deleniti iste distinctio officiis
-            ratione! Sint, provident voluptatum, nihil soluta repudiandae minus
-            quae, ipsa alias accusamus sapiente iure cum laborum? Voluptates
-            molestiae nam dolor nostrum deserunt ipsam similique qui harum
-            fugiat possimus omnis reiciendis architecto, eos saepe voluptas
-            suscipit porro ea optio pariatur quisquam adipisci a unde. Quasi,
-            porro illo beatae asperiores provident accusantium saepe! Iure ipsam
-            itaque dolorum. Facere suscipit iusto autem ut adipisci deleniti
-            rerum, voluptatem, animi quia recusandae, at inventore ducimus
-            accusantium a quidem. Et ipsum nostrum earum beatae voluptatibus
-            eaque vero sed neque excepturi, quidem incidunt quae accusantium vel
-            culpa adipisci omnis doloremque nam autem cumque delectus recusandae
-            enim, similique sint nemo? Architecto voluptatum porro totam amet
-            cumque non delectus. Nesciunt, illum quidem unde soluta consectetur
-            porro. Unde vel aliquam ab porro itaque hic voluptas, sint possimus
-            est, voluptatem, dolore sed aperiam molestias laboriosam. Nemo,
-            voluptatibus fugiat nulla laborum autem inventore tempore
-            consectetur rerum illo dolorum. Voluptas beatae odio omnis ab culpa,
-            tempora doloremque laudantium amet minus quo eaque nesciunt officia
-            atque temporibus debitis a doloribus? Quos, dolorum voluptates id
-            facere quod est voluptas sunt voluptatum minus. Expedita quia rem
-            nemo eveniet cupiditate autem alias, consequatur repudiandae
-            voluptate odit, aspernatur ullam amet accusantium necessitatibus
-            voluptas pariatur reprehenderit velit temporibus repellat. Dolorem
-            eos cupiditate doloribus esse rem accusamus animi et illum,
-            aspernatur maiores numquam? Illo repudiandae pariatur similique
-            eveniet deserunt voluptates aliquam sapiente repellendus nesciunt
-            quo debitis, voluptatum delectus, dicta id ipsum facilis quaerat!
-            Rem, ut ipsa id labore ullam voluptates nulla, aliquam numquam,
-            voluptate similique facere ad. Quos tempora repudiandae perspiciatis
-            ut soluta molestias aut obcaecati. Quisquam quasi eveniet sunt?
-            Autem animi sit, nostrum beatae exercitationem, harum dignissimos
-            iure enim, cum nemo pariatur! Voluptatem aperiam hic accusantium
-            culpa, repudiandae unde natus, quod quia, in voluptatibus eum. Id,
-            sint non minima corrupti animi qui! Praesentium cum, ipsam
-            voluptatem perferendis, aspernatur recusandae alias placeat sapiente
-            obcaecati hic quidem temporibus reprehenderit? Dolorum itaque
-            incidunt autem quis magnam ut at ab facere, ipsam animi quos
-            voluptate beatae, numquam explicabo et libero nulla voluptatem
-            alias, quasi molestias sit! Neque illum facere deleniti totam
-            reiciendis, veritatis dolore quisquam earum, exercitationem magni
-            natus iure ducimus quaerat nam sint laborum porro reprehenderit
-            error deserunt maiores consectetur? Minus sequi deleniti voluptas
-            rerum pariatur, quibusdam molestiae tenetur, consectetur at quod,
-            eos ex suscipit? Amet molestias eum explicabo doloremque veniam!
-            Consequatur modi fugit nihil vitae libero ipsam veritatis obcaecati
-            cupiditate dolorem laborum maiores provident perferendis odio
-            explicabo repellendus, earum fuga corporis incidunt porro? Velit,
-            cum ratione! Repellendus placeat rerum iusto consequatur corrupti
-            aspernatur voluptate et? Velit repellat libero ipsam quas!
-            Voluptate, consequuntur odit est laudantium id et distinctio, quidem
-            obcaecati nulla molestias mollitia ipsam? Est dicta, perferendis
-            rerum in similique pariatur, cum odit nihil voluptates earum
-            molestias voluptatem facere non tenetur doloribus aliquam aperiam et
-            quis ipsum ea quia inventore ipsam maiores sit? Eveniet, ducimus
-            totam!
+            Hypertext Markup Language, it defines the meaning and structure of
+            web content. It was designed to replace HTML4, XHTML and the HTML
+            DOM level 2. Key new features are:
+            <ul>
+              <li>
+                Improved support for embedding graphics (canvas), audio (audio),
+                and video content (video).
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">
+                  Mozilla Canvas
+                </a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio">
+                  Mozilla Audio
+                </a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video">
+                  Mozilla Video
+                </a>
+              </li>
+              <li>
+                Extensions to the JavaScript API such as geolocation and
+                drag-and-drop as well for storage and caching.
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API">
+                  Mozilla Geolocation
+                </a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API">
+                  Mozilla Drag and Drop
+                </a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API">
+                  Mozilla Web Storage
+                </a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache">
+                  Mozilla Application Cache
+                </a>
+              </li>
+              <li>
+                Introduction of "Web Workers" A web worker is a script that runs
+                in the background (i.e., in another thread) without the page
+                needing to wait for it to complete. The user can continue to
+                interact with the page while the web worker runs in the
+                background. Workers utilize thread-like message passing to
+                achieve parallelism.
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers">
+                  Web Workers Mozilla.org
+                </a>
+              </li>
+              <li>
+                Provides two storage objects, Local storage, and Session
+                storage. These objects act as a temporary database for websites
+                which reduces the cookie size and helps to speed up response
+                time.
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">
+                  Local Storage Mozilla.org
+                </a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage">
+                  Session Storage Mozilla.org
+                </a>
+              </li>
+              <li>
+                Cleaner and more improved semantics:
+                <ol>
+                  <li>
+                    aricle - Is intended to be independently distributable or
+                    reusable.
+                  </li>
+                  <li>
+                    aside - Is a sidebar to your main content. It is not
+                    included in the flow of the main content.
+                  </li>
+                  <li>details - Toggles detailed information.</li>
+                  <li>figcaption - Is to caption your image.</li>
+                  <li>
+                    figure - Is for wrapping your image content around it.
+                  </li>
+                  <li>
+                    footer - Found at the bottom of the website. Usually
+                    contains legal, author details and contact information.
+                  </li>
+                  <li>
+                    header - Found at the top of a website and can contain
+                    navigational elements and logos.
+                  </li>
+                  <li>
+                    main - Represents the main content of the body excluding
+                    header, nav, aside, and footer.
+                  </li>
+                  <li>nav - It provides navigational links.</li>
+                  <li>section - Is a grouping of content.</li>
+                  <li>
+                    summary - Specifies a summary, caption, or legend for a
+                    details element disclosure box.
+                  </li>
+                  <li>time - Allows a human-readable-version of a date.</li>
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">
+                    Elements Mozilla.org
+                  </a>
+                </ol>
+              </li>
+            </ul>
+            Example:
+            <a href="https://www.youtube.com/watch?v=UB1O30fR-EE">
+              HTML Crash Course for absolute beginners – Traversy Media
+            </a>
+            <a href="https://www.youtube.com/watch?v=Wm6CUkswsNw">
+              Build An HTML5 Website with a Responsive Layout – Traversy Media
+            </a>
+            <a href="https://www.youtube.com/watch?v=DPnqb74Smug&t=30s">
+              Learn HTML5 – full course with code samples - Freecodecamp
+            </a>
+            <a href="https://www.youtube.com/watch?v=pQN-pnXPaVg">
+              HTML Full Course – Build a Website Tutorial – Freecodecamp
+            </a>
           </p>
         </div>
         <div id="section-css" className="section-css section">
-          <h2>CSS</h2>
+          <h2>CSS3</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            officia quibusdam iusto deleniti libero maxime eum placeat dolore
-            cum cumque tempora recusandae aliquam dolorem vitae eius, soluta
-            adipisci natus fuga?
+            Does not deprecate older CSS code it is only an addition to the
+            features offered by CSS1. New Features:
+            <ul>
+              <li>
+                Box Shadow – A property that enables you to add a shadow to an
+                element.
+              </li>
+              <li>
+                Opacity – Can make an element totally transparent or slightly
+                see-through depending on the indicated values.
+              </li>
+              <li>
+                Rounded Corners – By using border-radius property you can make
+                an element have rounded corners.
+              </li>
+              <li>Attribute Selectors</li>
+              <li>New Colors</li>
+              <li>Supports responsive design by using media queries.</li>
+              <li>CSS animations without using Javascript or Flash code.</li>
+            </ul>
+            <a href="https://tympanus.net/codrops/css_reference/">
+              CSS Reference
+            </a>
+            <a href="https://www.youtube.com/watch?v=CUxH_rWSI1k">
+              CSS Tutorial - Derek Banas
+            </a>
           </p>
         </div>
         <div id="section-javascript" className="section-javascript section">
-          <h2 >Javascript</h2>
+          <h2>Javascript</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem
-            voluptate totam eveniet quis, alias provident, consectetur ab culpa
-            voluptatem molestias, vel vitae unde autem quae nulla repudiandae
-            quam? Voluptate reiciendis repudiandae amet quo, necessitatibus
-            possimus at, hic obcaecati voluptates officiis ut. Delectus sit
-            quidem ab magnam voluptates? Doloremque ipsum minus quibusdam
-            debitis accusamus, ad ab neque nemo ex, suscipit nisi reiciendis quo
-            saepe a libero earum fugiat repellat fugit nihil commodi facilis
-            voluptates? Eligendi, rerum illo. Earum optio laborum iusto
-            doloremque possimus dignissimos, aut nesciunt nihil. Omnis quaerat
-            ex ad, fuga molestiae soluta facere, cum quae quis corporis possimus
-            temporibus in iure nobis sed voluptatibus nisi nihil amet itaque
-            maxime? Debitis laudantium minus quaerat ut, provident sed incidunt
-            maxime error sapiente corporis laborum beatae distinctio suscipit
-            odit nam ducimus dolorum. Autem sunt quos quisquam ratione odio,
-            rerum voluptatibus ipsa error vel veritatis excepturi. Ea itaque
-            tempore quaerat cupiditate reiciendis, explicabo delectus rem saepe
-            ipsa sed ratione reprehenderit error beatae incidunt temporibus et
-            veniam fugiat laudantium cumque nobis consequuntur id impedit hic.
-            Asperiores officia tempore nulla tenetur, adipisci quibusdam neque
-            quo eum voluptas dicta, nihil porro libero reprehenderit omnis amet
-            ipsam veniam sit, doloremque illo modi aliquam. Quis quam
-            necessitatibus beatae iusto ea quos in tenetur laboriosam, at nemo
-            alias harum ducimus maxime saepe, dolores modi! Accusantium quae
-            assumenda nobis dolore magnam vero labore possimus, quaerat maxime
-            in, vel provident? Quibusdam blanditiis perspiciatis sint, nesciunt
-            distinctio minus. Ipsa, adipisci, odio blanditiis laudantium velit
-            optio provident hic nostrum officia cumque sunt rerum aspernatur
-            enim dignissimos sequi inventore ea repellat qui! Eum, at
-            reprehenderit sunt quis, aspernatur asperiores beatae consequatur
-            iusto ex perferendis, voluptate eos repellat doloribus iste
-            dignissimos voluptates quam facilis aliquid? Nobis officiis pariatur
-            velit vel aspernatur quibusdam esse neque unde voluptas alias
-            officia temporibus veniam harum, autem, saepe expedita veritatis
-            nostrum facilis odit quidem numquam eligendi tenetur culpa! In earum
-            suscipit recusandae accusantium magni? Amet, ratione inventore? Unde
-            culpa sint ullam cum dolorem iste saepe, quisquam eius fugiat
-            nesciunt, quis, veritatis recusandae numquam. Perspiciatis vitae,
-            amet molestiae obcaecati voluptates impedit cumque qui totam ad
-            error earum quas aut laborum omnis dolorem dolorum. Molestias
-            quisquam quasi reprehenderit magnam, iusto beatae assumenda quis?
-            Pariatur tempore excepturi quia sunt minus reiciendis iste quaerat
-            soluta nulla, deleniti minima dolorem? Minima hic ipsa deleniti
-            porro voluptates iure pariatur nemo veritatis fugiat provident?
-            Inventore hic eius laboriosam repellat qui. Dolores voluptatum unde
-            provident, eaque sequi deleniti.
+            Javascript is an event driven language which means that instead of
+            waiting for a response it will continue executing code but will also
+            continue listening for other events to respond to. It is a
+            prototype-based object oriented programming language. It supports
+            event-driven, functional and imperative programming styles. It has
+            application programming interfaces for working with text, dates,
+            regular expressions, standard data structures, and the Document
+            Object Model. Javascript does not include any input/output (i/o),
+            such as networking, storage, or graphics it relies on a C++ library.
+            Callback – Is a function that is to be executed after another
+            function has finished executing. Any function that is passed as an
+            argument is called a callback function. In javascript, functions are
+            considered objects and can take other functions as parameters, and
+            can be returned by other functions.
+            Example: 
+            
+
           </p>
         </div>
         <div id="section-react" className="section-react section">

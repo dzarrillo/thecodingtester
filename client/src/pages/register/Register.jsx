@@ -30,17 +30,18 @@ class Register extends Component {
         fullName: "",
         email: "",
         password: "",
+        password2: "",
       },
       userStatus: null,
-      show: false
+      show: false,
     };
   }
 
   handleClose = () => {
     this.setState({ show: false });
     this.props.history.push("/signin");
-  }
-  handleShow = () => this.setState({ show: true }); 
+  };
+  handleShow = () => this.setState({ show: true });
 
   handleChange = (event) => {
     event.preventDefault();
@@ -62,7 +63,7 @@ class Register extends Component {
         break;
       case "password2":
         errors.password2 =
-          value.length < 8 ? "Password must be 8 characters long!" : "";
+          value !== this.state.password ? "Password does not match!" : "";
         break;
       default:
         break;
@@ -87,7 +88,7 @@ class Register extends Component {
           password2: this.state.password2,
         });
         console.log(`returned data: ${response.data}`);
-        this.setState({ userStatus: response.data});
+        this.setState({ userStatus: response.data });
         this.handleShow();
         if (response.status === 200) {
           // I need to change this to browserhistory push
@@ -103,10 +104,8 @@ class Register extends Component {
     }
   };
 
- 
   render() {
     const { errors } = this.state;
-    
 
     return (
       <Fragment>
@@ -170,7 +169,7 @@ class Register extends Component {
                 onChange={this.handleChange}
                 noValidate
               />
-              {errors.password.length > 0 && (
+              {errors.password2.length > 0 && (
                 <span className="error error-msg">{errors.password2}</span>
               )}
             </div>
@@ -191,13 +190,15 @@ class Register extends Component {
               <Modal.Title>Register Information</Modal.Title>
             </Modal.Header>
 
-            <Modal.Body  >
-              <p>{this.state.userStatus}</p>
+            <Modal.Body>
+              <p>{this.state.userStatus}, You can now sign in!</p>
             </Modal.Body>
 
             <Modal.Footer>
-              <Button variant="secondary" onClick={this.handleClose}>Close</Button>
-              <Button variant="primary">Save changes</Button>
+              <Button variant="primary" onClick={this.handleClose}>
+                OK
+              </Button>
+              
             </Modal.Footer>
           </Modal>
         </div>
