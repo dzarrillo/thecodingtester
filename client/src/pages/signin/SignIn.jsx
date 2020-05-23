@@ -76,8 +76,8 @@ class SignIn extends Component {
         console.log(`SignInn ${response.status}`)
         if(response.status === 200) {
           // Does not refresh navbar with logout menuitem
-          //await this.props.history.push("/resources"); 
-          window.location = "/";
+          //this.props.history.push("/resources"); 
+          window.location = "/home";
           
          }
       } catch (error) {
