@@ -19,6 +19,7 @@ import Help from "./pages/help/Help";
 import Register from "./pages/register/Register";
 import NoMatch from "./pages/nomatch/NoMatch";
 import Footer from "./components/footer/Footer";
+import PrivateRoute from "./pages/privateroute/PrivateRoute";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Layout from "./pages/layout/Layout";
 import Row from "react-bootstrap/Row";
@@ -49,8 +50,10 @@ class App extends Component {
                 <Route exact path="/help" component={Help} />
                 <Route exact path="/exam" component={Exam} />
                 <Route exact path="/register" component={Register} />
-                <Route exact path="/resources" component={Resources} />
+                {/* <Route exact path="/resources" component={Resources} /> */}
+                <PrivateRoute path="/resources" component={Resources}/>
                 {/* <Route exact path="/resources" render={() => this.props.auth ? <Resources /> : <Redirect to="/signin" /> } /> */}
+                
                 <Route component={NoMatch} />
               </Switch>
               <Footer />

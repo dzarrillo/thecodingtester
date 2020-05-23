@@ -9,7 +9,7 @@ function saveToLocalStorage(state){
         const serializedState = JSON.stringify(state);
         localStorage.setItem("state", serializedState);
     } catch(e) {
-        console.log(`Error with local storage ${JSON.stringify(e)}`); 
+        console.log(`Error saving to local storage ${JSON.stringify(e)}`); 
     }
 } 
 function loadFromLocalStorage(){
@@ -27,6 +27,6 @@ const middlewares = [logger, reduxThunk];
 
 const store = createStore(rootReducer, persistedState, applyMiddleware(...middlewares));
 
-store.subscribe( () =>saveToLocalStorage(store.getState));
+store.subscribe( () => saveToLocalStorage(store.getState()));
 
 export default store;

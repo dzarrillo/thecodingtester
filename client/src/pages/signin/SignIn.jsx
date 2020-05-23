@@ -73,11 +73,11 @@ class SignIn extends Component {
           email: this.state.email,
           password: this.state.password
         });
-        
+        console.log(`SignInn ${response.status}`)
         if(response.status === 200) {
           // Does not refresh navbar with logout menuitem
-          //this.props.history.push("/resources"); 
-          window.location = "/resources";
+          //await this.props.history.push("/resources"); 
+          window.location = "/";
           
          }
       } catch (error) {
