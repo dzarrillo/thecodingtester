@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from "react";
+import { NavLink } from "react-router-dom";
 import "./SignIn.css";
 import "react-bootstrap";
 import axios from "axios";
-
+import { connect } from "react-redux";
+import * as actions from "../../redux/user/actions/userAction";
 
 // const validEmailRegex = RegExp(
 //   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
@@ -75,9 +77,10 @@ class SignIn extends Component {
         });
         console.log(`SignInn ${response.status}`)
         if(response.status === 200) {
+          await this.props.fetchUser();
           // Does not refresh navbar with logout menuitem
-          //this.props.history.push("/resources"); 
-          window.location = "/home";
+          this.props.history.push("/resources"); 
+          //window.location = "/home";
           
          }
       } catch (error) {
@@ -152,6 +155,7 @@ class SignIn extends Component {
               <a href="/auth/google" className="google btn-signin">
                 <i className="fa fa-google fa-fw"></i> Sign in with Google
               </a>
+              
             </div>
           </form>
         </div>
@@ -159,5 +163,7 @@ class SignIn extends Component {
     );
   }
 }
-
-export default SignIn;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+export default connect(mapStateToProps, actions)(SignIn);

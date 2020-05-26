@@ -16,7 +16,7 @@ class NavBar extends Component {
   };
 
   renderContent() {
-    // console.log(`navbar render ${JSON.stringify(this.props.auth)}`);
+    console.log(`navbar render ${JSON.stringify(this.props.auth)}`);
     switch (this.props.auth) {
       case null:
         return;
