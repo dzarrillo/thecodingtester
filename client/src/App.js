@@ -1,10 +1,11 @@
 import React, { Fragment, Component } from "react";
 import "./App.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect,
 } from "react-router-dom";
 import NavBar from "./components/navbar/NavBar";
 // import LandingPage from "./pages/landingpage/LandingPage";
@@ -36,7 +37,7 @@ class App extends Component {
       <Fragment>
         <Layout>
           <Router>
-          {/* <NavBar /> */}
+            {/* <NavBar /> */}
             <Row>
               <NavBar />
               <Switch>
@@ -44,15 +45,28 @@ class App extends Component {
                 <Route exact path="/" component={Home} />
                 <Route exact path="/home" component={Home} />
                 <Route exact path="/blog" component={Blog} />
-                <Route exact path="/signin" component={SignIn} />
+
+                <Route
+                  exact
+                  path="/signin"
+                  render={() =>
+                    this.props.auth ? <Redirect to="/home" /> : <SignIn />
+                  }
+                />
+                <Route
+                  exact
+                  path="/register"
+                  render={() =>
+                    this.props.auth ? <Redirect to="home" /> : <Register />
+                  }
+                />
+
                 <Route exact path="/about" component={About} />
                 <Route exact path="/help" component={Help} />
                 <Route exact path="/exam" component={Exam} />
-                <Route exact path="/register" component={Register} />
-                {/* <Route exact path="/resources" component={Resources} /> */}
-                <PrivateRoute path="/resources" component={Resources}/>
-                {/* <Route exact path="/resources" render={() => this.props.auth ? <Resources /> : <Redirect to="/signin" /> } /> */}
-                
+
+                <PrivateRoute path="/resources" component={Resources} />
+
                 <Route component={NoMatch} />
               </Switch>
               <Footer />
@@ -64,8 +78,8 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, actions)(App);

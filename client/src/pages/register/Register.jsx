@@ -39,7 +39,10 @@ class Register extends Component {
 
   handleClose = () => {
     this.setState({ show: false });
-    this.props.history.push("/signin");
+    window.location = "/signin";
+    // Getting type error push undefined
+    //this.props.history.push("/signin");
+     
   };
   handleShow = () => this.setState({ show: true });
 
@@ -92,8 +95,8 @@ class Register extends Component {
         this.handleShow();
         if (response.status === 200) {
           // I need to change this to browserhistory push
-          // window.location = "/signin";
-          //this.props.history.push("/signin");
+          // Do the below in modal form handleClose()
+          // this.props.history.push("/signin");
         }
       } catch (error) {
         console.log(`Axios post failed: ${error.response.data}`);
@@ -185,7 +188,7 @@ class Register extends Component {
             </div>
           </form>
 
-          <Modal show={this.state.show} onHide={this.handleClose}>
+          <Modal {...this.props} show={this.state.show} onHide={this.handleClose} >
             <Modal.Header closeButton>
               <Modal.Title>Register Information</Modal.Title>
             </Modal.Header>
