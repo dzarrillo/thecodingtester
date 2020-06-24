@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import Spinner from "../../components/loadingspinner/LoadingSoinner";
-import "./Exam.css";
+import ExamStyle from "./Exam.module.css";
 import axios from "axios";
 
 class Exam extends Component {
@@ -8,7 +8,8 @@ class Exam extends Component {
     super(props);
     this.state = {
       exams: [],
-      isLoading: true
+      isLoading: true,
+      name: ""
     };
   }
 
@@ -17,7 +18,8 @@ class Exam extends Component {
     const { typeoftest } = this.props.location.state;
     let exam = "";
     console.log(`Type of test shit: ${typeoftest} `);
-
+    this.setState( {name: typeoftest});
+    
     this.setState({isLoading: true});
 
     switch (typeoftest) {
@@ -58,7 +60,7 @@ class Exam extends Component {
 
   getData = async exam => {
     try {
-      console.log("In getDadta ", exam);
+      
       const questions = await axios.get(exam);
       this.setState({ exams: questions.data });
     } catch (error) {
@@ -72,13 +74,14 @@ class Exam extends Component {
     return (
       <Fragment>
         <div className="container-page">
-          <h1>Exams</h1>
+          <h1 className={ExamStyle.examTitle}> {this.state.name} Questions</h1>
           
           {!this.state.exams.length ? (
             <h1>No data to display</h1>
           ) : (
             this.state.exams.map(exam => {
-              return <p key={exam.question}> {exam.question} </p>;
+              return( <div className={ExamStyle.qcontainer}> <h3 key={exam.question}>Q) {exam.question} </h3>
+                <h5 className={ExamStyle.answer}>a) <span className={ExamStyle.span}> {exam.answer}</span> </h5> </div>);
             })
           )}
           {this.state.isLoading ? <Spinner></Spinner> : ""}
