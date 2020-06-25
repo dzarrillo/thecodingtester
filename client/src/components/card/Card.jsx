@@ -11,8 +11,8 @@ const Card = props => {
         </div>
         <div className="content">
           <div>
-            <h3>{props.name}</h3>
-            <p>{props.description}</p>
+            <h6>{props.name}</h6>
+            <p style={{fontSize: "0.7em" }}>{props.description}</p>
             {/* <a href={"/exam?test=" + props.name} >Start Test</a> */}
             <NavLink
               to={{
@@ -20,7 +20,7 @@ const Card = props => {
                 state: { typeoftest: props.name }
               }}
             >
-              Start Test
+              Go
             </NavLink>
           </div>
         </div>
