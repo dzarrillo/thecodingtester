@@ -26,25 +26,48 @@ const AllTests = [
 
 const Home = () => {
   return (
-    <div >
-      <div className={HomeStyle.titleContainer}>
-        <h1 className={HomeStyle.title}>A Resource for Developers by Developers</h1>
+    <div style={{ paddingTop: "50px" }}>
+      <div className={HomeStyle.vHeader}>
+        <div className={HomeStyle.fullscreenVideoWrap}>
+          <video
+            // src="./public/video/Sketching.mp4"
+            src="/video/Sketching.mp4"
+            width="400"
+            autoplay="true"
+            loop="true"
+            muted="true"
+          >
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+        <div className={HomeStyle.headerOverlay}></div>
+        <div className={HomeStyle.headerContent}>
+          <h1 className={HomeStyle.title}>
+            A Resource for Developers by Developers
+          </h1>
+          <div style={{ marginTop: "50px" }}>
+            <a className={HomeStyle.questionLink} href="#sectionTest">
+              <span>Interview Questions</span>
+            </a>
+          </div>
+        </div>
       </div>
 
-      
       <Row xs={12} md={4} className="justify-content-center">
         {!AllTests ? (
           <h2>No data to display</h2>
         ) : (
           AllTests.map((test) => {
             return (
-              <Card
-                key={test.name}
-                name={test.name}
-                description={test.description}
-                urlimg={test.urlImg}
-                test={test}
-              ></Card>
+              <div id="sectionTest">
+                <Card
+                  key={test.name}
+                  name={test.name}
+                  description={test.description}
+                  urlimg={test.urlImg}
+                  test={test}
+                ></Card>
+              </div>
             );
           })
         )}
