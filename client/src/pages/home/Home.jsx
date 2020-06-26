@@ -11,6 +11,8 @@ import MySqlImg from "../../assets/images/mysql.png";
 import GitHubImg from "../../assets/images/github_black.png";
 import Row from "react-bootstrap/Row";
 import HomeStyle from "./Home.module.css";
+import ScrollTop from "../../components/scrolltoparrow/ScrollTopArrow";
+
 
 const AllTests = [
   { name: "HTML5", urlImg: HtmlImg, description: "Interview questions" },
@@ -21,10 +23,12 @@ const AllTests = [
   { name: "React.js", urlImg: ReactImg, description: "Interview questions" },
   { name: "Mongo", urlImg: MongoImg, description: "Interview questions" },
   { name: "MySQL", urlImg: MySqlImg, description: "Interview questions" },
-  { name: "GitHub", urlImg: GitHubImg, description: "Interview questions" },
+  { name: "GitHub", urlImg: GitHubImg, description: "Interview questions" }
 ];
 
 const Home = () => {
+  
+
   return (
     <div style={{ paddingTop: "50px" }}>
       <div className={HomeStyle.vHeader}>
@@ -33,9 +37,9 @@ const Home = () => {
             // src="./public/video/Sketching.mp4"
             src="/video/Sketching.mp4"
             width="400"
-            autoplay="true"
-            loop="true"
-            muted="true"
+            autoPlay={true}
+            loop={true}
+            muted={true}
           >
             Your browser does not support HTML5 video.
           </video>
@@ -47,11 +51,13 @@ const Home = () => {
           </h1>
           <div style={{ marginTop: "50px" }}>
             <a className={HomeStyle.questionLink} href="#sectionTest">
-              <span>Interview Questions</span>
+              Interview Questions
             </a>
           </div>
         </div>
       </div>
+
+      <ScrollTop />
 
       <Row xs={12} md={4} className="justify-content-center">
         {!AllTests ? (
