@@ -2,11 +2,13 @@ import React, { Fragment } from "react";
 import "./Blog.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import ScrollTop from "../../components/scrolltoparrow/ScrollTopArrow";
 
 const Blog = () => {
   return (
     <Fragment>
       <div className="container-page">
+      <ScrollTop />
         <Row>
           <Col >
             <h1 className="blog-title">

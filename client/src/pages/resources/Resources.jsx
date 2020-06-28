@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import "./Resources.css";
 import Prism from "prismjs";
+import ScrollTop from "../../components/scrolltoparrow/ScrollTopArrow";
 
 const Resources = () => {
   useEffect(() => {
@@ -10,6 +11,7 @@ const Resources = () => {
 
   return (
     <div className="container-page">
+      <ScrollTop />
       <h1>Resources page</h1>
       <div className="sidenav">
         <a href="#section-html">HTML</a>
