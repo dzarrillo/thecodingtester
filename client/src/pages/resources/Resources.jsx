@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./Resources.css";
 import Prism from "prismjs";
 import ScrollTop from "../../components/scrolltoparrow/ScrollTopArrow";
+import MyThemeStyle from "../../MyTheme.module.css";
 
 const Resources = () => {
   useEffect(() => {
@@ -10,9 +11,9 @@ const Resources = () => {
   }, []);
 
   return (
-    <div className="container-page">
+    <div className={`container-page ${MyThemeStyle.textColor}`}>
       <ScrollTop />
-      <h1>Resources page</h1>
+      <h1 className={MyThemeStyle.textColor}>Resources page</h1>
       <div className="sidenav">
         <a href="#section-html">HTML</a>
         <a href="#section-css">CSS</a>
@@ -26,13 +27,13 @@ const Resources = () => {
       {/* Page content  */}
       <div className="main">
         <div id="section-html" className="section-html section">
-          <h2>HTML5</h2>
-          <p>
+          <h2 className={MyThemeStyle.textColor}>HTML5</h2>
+          <p className={MyThemeStyle.textColor}>
             Hypertext Markup Language, it defines the meaning and structure of
             web content. It was designed to replace HTML4, XHTML and the HTML
             DOM level 2. Key new features are:
           </p>
-          <ul>
+          <ul className={MyThemeStyle.textColor}>
             <li>
               Improved support for embedding graphics (canvas), audio (audio),
               and video content (video).
@@ -124,10 +125,10 @@ const Resources = () => {
             </li>
           </ul>
 
-          <figure>
+          <figure className={MyThemeStyle.textColor}>
             <figcaption>Example</figcaption>
             <pre>
-              <code>
+              <code className={MyThemeStyle.textColor}>
                 {/* Your code here! */}
                 &lt;header&gt;&lt;/header&gt; <br></br>
                 &lt;section&gt; <br></br>
@@ -158,7 +159,7 @@ const Resources = () => {
             HTML Full Course – Build a Website Tutorial – Freecodecamp
           </a>
         </div>
-        <div id="section-css" className="section-css section">
+        <div id="section-css" className={ ` ${MyThemeStyle.textColor} section-css section` } >
           <h2>CSS3</h2>
           <p>
             Does not deprecate older CSS code it is only an addition to the
@@ -191,7 +192,7 @@ const Resources = () => {
             </a>
           </p>
         </div>
-        <div id="section-javascript" className="section-javascript section">
+        <div id="section-javascript" className={`section-javascript section ${MyThemeStyle.textColor}`}>
           <h2>Javascript</h2>
           <p>
             Javascript is an event driven language which means that instead of
@@ -210,10 +211,10 @@ const Resources = () => {
             can be returned by other functions. Example:
           </p>
 
-          <figure>
+          <figure className={MyThemeStyle.textColor}>
             <figcaption>Example</figcaption>
             <pre className="line-numbers">
-              <code className="language-js">
+              <code className={`language-js ${MyThemeStyle.textColor}`}>
                 {/* Your code here! */}
                 {`let arrOne = [“apple”, “orange”, “pear”, “grape”];
 	                  let arrTwo = [];
@@ -251,7 +252,7 @@ const Resources = () => {
           <figure>
             <figcaption>Example</figcaption>
             <pre className="line-numbers">
-              <code className="language-js">
+              <code className={`language-js ${MyThemeStyle.textColor}`}>
                 {/* Your code here! */}
                 {`
                 let arrOne = [“apple”, “orange”, “pear”, “grape”];
@@ -286,7 +287,7 @@ const Resources = () => {
           <figure>
             <figcaption>Example of a callback function</figcaption>
             <pre className="line-numbers">
-              <code className="language-js">
+              <code className={`language-js ${MyThemeStyle.textColor}`}>
                 {/* Your code here! */}
                 {`
                 let arrOne = [“apple”, “orange”, “pear”, “grape”];

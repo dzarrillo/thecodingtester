@@ -3,6 +3,7 @@ import Spinner from "../../components/loadingspinner/LoadingSoinner";
 import ExamStyle from "./Exam.module.css";
 import axios from "axios";
 import ScrollTop from "../../components/scrolltoparrow/ScrollTopArrow";
+import MyThemeStyle from "../../MyTheme.module.css";
 
 class Exam extends Component {
   constructor(props) {
@@ -75,13 +76,13 @@ class Exam extends Component {
     return (
       <Fragment>
         <div className="container-page">
-          <h1 className={ExamStyle.examTitle}> {this.state.name} Questions</h1>
+          <h1 className={ExamStyle.examTitle, MyThemeStyle.textColor}> {this.state.name} Questions</h1>
           <ScrollTop />
           {!this.state.exams.length ? (
             <h1>No data to display</h1>
           ) : (
             this.state.exams.map(exam => {
-              return( <div className={ExamStyle.qcontainer}> <h3 key={exam.question}>Q) {exam.question} </h3>
+              return( <div className={ExamStyle.qcontainer}> <h3 className={MyThemeStyle.textColor} key={exam.question}>Q) {exam.question} </h3>
                 <h5 className={ExamStyle.answer}>a) <span className={ExamStyle.span}> {exam.answer}</span> </h5> </div>);
             })
           )}

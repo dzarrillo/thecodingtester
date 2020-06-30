@@ -1,12 +1,12 @@
 
 
-.blog-title{
+.blogTitle{
     text-align: left;
 }
-.blog-article{
+.blogArticle{
     text-align: left;
 }
-.blog-recent-posts{
+.blogRecentPosts{
     padding-left: 20px;
     text-align: left;
 }

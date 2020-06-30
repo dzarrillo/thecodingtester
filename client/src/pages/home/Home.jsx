@@ -47,8 +47,10 @@ const Home = () => {
         <div className={HomeStyle.headerOverlay}></div>
         <div className={HomeStyle.headerContent}>
           <h1 className={HomeStyle.title}>
-            A Resource for Developers by Developers
+            A Resource for New Developers 
           </h1>
+          <h5>Before software can be reusable it first has to be usable</h5>
+          <h6>- Ralph Johnson</h6>
           <div style={{ marginTop: "50px" }}>
             <a className={HomeStyle.questionLink} href="#sectionTest">
               Interview Questions

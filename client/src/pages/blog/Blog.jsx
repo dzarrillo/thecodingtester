@@ -1,8 +1,9 @@
 import React, { Fragment } from "react";
-import "./Blog.css";
+import BlogStyle from "./Blog.module.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ScrollTop from "../../components/scrolltoparrow/ScrollTopArrow";
+import MyThemeStyle from "../../MyTheme.module.css";
 
 const Blog = () => {
   return (
@@ -11,14 +12,14 @@ const Blog = () => {
       <ScrollTop />
         <Row>
           <Col >
-            <h1 className="blog-title">
+            <h1 className={BlogStyle.blogTitle, MyThemeStyle.textColor}>
               Don Zarrillo Jr - My Web Development Blog
             </h1>
           </Col>
         </Row>
         <Row>
           <Col md={8}>
-            <p className="blog-article">
+            <p className={`${BlogStyle.blogArticle} ${MyThemeStyle.textColor}`}>
               LTest1onsectetur adipisicing elit. Eius
               accusantium temporibus cupiditate neque sed? Odio quas quisquam
               nisi aut porro itaque sed molestias odit omnis, sit aperiam.
@@ -45,8 +46,8 @@ const Blog = () => {
             </p>
           </Col>
           <Col md={3}>
-            <h4>Recent Posts</h4>
-            <ul className="blog-recent-posts">
+            <h4 className={`${MyThemeStyle.textColor} ${BlogStyle.blogRecentPosts}`} >Recent Posts</h4>
+            <ul className={`${BlogStyle.blogRecentPosts} ${MyThemeStyle.textColor}`}>
               <li>Test1</li>
               <li>Test1</li>
               <li>Test1</li>
